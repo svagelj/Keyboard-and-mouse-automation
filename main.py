@@ -10,7 +10,7 @@ maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements 
 ## This is one cycle that repeats its self over and over
 cycle = [
             {"type":"keyboard", "key":"a", "duration":0.1, "wait":0.3},
-            {"type":"keyboard", "key":"d", "duration":0.1, "wait":(0.1, 0.2)},
+            {"type":"keyboard", "key":"shift+d", "duration":0.1, "wait":(0.1, 0.2)},
             {"type":"mouse", "key":"left", "duration":0.1, "wait":(0.1, 0.2)},
             {"type":"mouse", "key":(100,100), "duration":0.1, "wait":(2.1, 2.2)},
             {"type":"mouse", "key":(5000, 5000, "absolute"), "duration":0.1, "wait":(0.1, 0.2)},
@@ -51,7 +51,7 @@ cycle = []
 
 
 
-## TODO add support for multiple button presses
+
 
 
 
@@ -160,14 +160,16 @@ def MoveMouse(dx,dy, absolute=False):
 ######################
 
 ## Functions defining the whole key press - i.e. key down, wait, key up
-def SendKey(key, delaySeconds=None):
+def SendKey(keysArray, delaySeconds=None):
 
-    PressKeyboard(key)
+    for key in keysArray:
+        PressKeyboard(key)
 
     if delaySeconds != None:
         time.sleep(delaySeconds)
     
-    ReleaseKeyboard(key)
+    for key in keysArray:
+        ReleaseKeyboard(key)
 
     return
 
@@ -208,7 +210,9 @@ def main():
 
             if keyData["type"] == "keyboard":
                 ## Press keyboard
-                SendKey(keyboardCodeMap[keyData["key"]], delaySeconds=duration)
+                print("keys to press",[keyCode for keyCode in keyData["key"].split("+")])
+                keysArray = [ keyboardCodeMap[keyCode] for keyCode in keyData["key"].split("+") ]
+                SendKey(keysArray, delaySeconds=duration)
             elif keyData["type"] == "mouse":
                 if keyData["key"] in ["left", "right", "middle"]:
                     ## Press mouse
