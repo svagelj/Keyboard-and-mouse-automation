@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-import random
-
-## random.uniform(a, b) is a function that returns a random float value between a and b with uniform distribution
 
 defaultWaitTimeSeconds = 5  ## Time between current and next key press
 maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements before stopping the main infinite loop
@@ -55,7 +52,7 @@ cycle = []
 
 
 
-
+import random
 import time
 import ctypes
 from ctypes import wintypes
