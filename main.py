@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-defaultWaitTimeSeconds = 5  ## Time between current and next key press
+defaultWaitTimeSeconds = 1  ## Time between current and next key press
 maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements before stopping the main infinite loop
 
 ## This is just an example! Change it how you want.
-## This is one cycle that repeats its self over and over
+## This is one cycle that repeats itself over and over
 cycle = [
-            {"type":"keyboard", "key":"a", "duration":0.1, "wait":0.3},
-            {"type":"keyboard", "key":"shift+d", "duration":0.1, "wait":(0.1, 0.2)},
+            {"type":"keyboard", "key":"a", "duration":0.1, "wait":0.3},                                 ## this an example of basic key input. "wait" is optional, if there is no "wait" the default is used
+            {"type":"keyboard", "key":"shift+d", "duration":0.1, "wait":(0.1, 0.2)},                    ## to use multiple keyboard keys just list all keys with a '+' between each one (no '+' at the beginning and end)
             {"type":"mouse", "key":"left", "duration":0.1, "wait":(0.1, 0.2)},                          ## mouse button support left, middle and right clicks
             {"type":"mouse", "key":(100,100), "duration":0.1, "wait":(2.1, 2.2)},                       ## key for mouse is relative position (x,y) to the current mouse position
             {"type":"mouse", "key":(5000, 5000, "absolute"), "duration":0.1, "wait":(0.1, 0.2)},        ## if key has more than 2 element it is used as absolute position
