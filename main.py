@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-defaultWaitTimeSeconds = 1  ## Time between current and next key press
 maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements before stopping the main infinite loop
+defaultWaitTimeSeconds = 1  ## Default time between current and next key press
 
 ## This is just an example! Change it how you want.
 ## This is one cycle that repeats itself over and over
@@ -19,7 +19,7 @@ cycle = (
 
 
 ########################################################################################
-#####    Bellow is actual code. You should probably NOT touch it.                  #####
+#####    Below is actual code. You should probably NOT touch it.                  #####
 ########################################################################################
 
 
