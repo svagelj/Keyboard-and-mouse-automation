@@ -9,14 +9,14 @@ maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements 
 ## This is just an example! Change it how you want.
 ## This is one cycle that repeats its self over and over
 cycle = [
-            {"type":"keyboard", "key":"a", "duration":0.1, "wait":random.uniform(0.1, 0.2)}, 
-            {"type":"keyboard", "key":"d", "duration":0.1, "wait":random.uniform(0.1, 0.2)},
-            {"type":"mouse", "key":"left", "duration":0.1, "wait":random.uniform(0.1, 0.2)},
-            {"type":"mouse", "key":(100,100), "duration":0.1, "wait":random.uniform(2.1, 2.2)},
-            {"type":"mouse", "key":(5000, 5000, "absolute"), "duration":0.1, "wait":random.uniform(0.1, 0.2)},
+            {"type":"keyboard", "key":"a", "duration":0.1, "wait":0.3},
+            {"type":"keyboard", "key":"d", "duration":0.1, "wait":(0.1, 0.2)},
+            {"type":"mouse", "key":"left", "duration":0.1, "wait":(0.1, 0.2)},
+            {"type":"mouse", "key":(100,100), "duration":0.1, "wait":(2.1, 2.2)},
+            {"type":"mouse", "key":(5000, 5000, "absolute"), "duration":0.1, "wait":(0.1, 0.2)},
         ]
 
-## TODO Remove this line bellow before flight. It is here to prevent you making mistakes before you are ready for them
+## TODO IMPORTANT Remove this line bellow before flight. It is here to prevent you making mistakes before you are ready for them
 cycle = []
 
 
@@ -50,7 +50,7 @@ cycle = []
 
 
 
-## TODO add random calls at every key press
+
 ## TODO add support for multiple button presses
 
 
@@ -220,11 +220,16 @@ def main():
                     else:
                         MoveMouse(keyData["key"][0], keyData["key"][1], absolute=True)
             else:
-                print("Unrecognized type: "+str(keyData)+", must be one of: "+str(["left", "right", "middle"]))
+                print("[ERROR] Unrecognized mouse button type: "+str(keyData)+", must be one of: "+str(["left", "right", "middle"]))
 
             ## Wait before next move
             if "wait" in keyData.keys():
-                time.sleep(keyData["wait"])
+                if type(keyData["wait"]) in (type(2), type(2.1)):
+                    time.sleep(keyData["wait"])
+                elif len(keyData["wait"]) == 2:
+                    time.sleep(random.uniform(keyData["wait"][0], keyData["wait"][1]))
+                else:
+                    print("[ERROR] Specified wait time is not as expected. Expected is a number (float or int) or lower and upper bounds for random pick (a, b)")
             else:
                 time.sleep(defaultWaitTimeSeconds)
 
