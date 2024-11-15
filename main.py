@@ -5,16 +5,16 @@ maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements 
 
 ## This is just an example! Change it how you want.
 ## This is one cycle that repeats itself over and over
-cycle = [
+cycle = (
             {"type":"keyboard", "key":"a", "duration":0.1, "wait":0.3},                                 ## this an example of basic key input. "wait" is optional, if there is no "wait" the default is used
             {"type":"keyboard", "key":"shift+d", "duration":0.1, "wait":(0.1, 0.2)},                    ## to use multiple keyboard keys just list all keys with a '+' between each one (no '+' at the beginning and end)
-            {"type":"mouse", "key":"left", "duration":0.1, "wait":(0.1, 0.2)},                          ## mouse button support left, middle and right clicks
+            {"type":"mouse", "key":"left", "duration":0.1, "wait":(0.1, 0.2)},                          ## mouse button support left, middle and right clicks. If "wait" is array of two numbers random function is called with given lower and upper bounds
             {"type":"mouse", "key":(100,100), "duration":0.1, "wait":(2.1, 2.2)},                       ## key for mouse is relative position (x,y) to the current mouse position
             {"type":"mouse", "key":(5000, 5000, "absolute"), "duration":0.1, "wait":(0.1, 0.2)},        ## if key has more than 2 element it is used as absolute position
-        ]
+        )
 
 ## TODO IMPORTANT Remove this line bellow before flight. It is here to prevent you making mistakes before you are ready for them
-cycle = []
+# cycle = []
 
 
 
@@ -255,4 +255,4 @@ if __name__ == "__main__":
     print("Done pressing "+str(n)+" number of buttons.")
 
     if n == 0:
-        print("The main cycle variable is probably empty. Check if there is another definition of cycle dictionary somewhere else.")
+        print("The main cycle variable is probably empty. Check if there is another definition of cycle array somewhere else.")
