@@ -247,3 +247,6 @@ if __name__ == "__main__":
     n = main()
 
     print("Done pressing "+str(n)+" number of buttons.")
+
+    if n == 0:
+        print("The main cycle variable is probably empty. Check if there is another definition of cycle dictionary somewhere else.")
