@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-maxNumberOfKeyPresses = 7   ## Maximum number of key presses or mouse movements before stopping the main infinite loop
-defaultWaitTimeSeconds = 1  ## Default time between current and next key press
+maxNumberOfKeyPresses = 7           ## Maximum number of key presses or mouse movements before stopping the main infinite loop
+defaultWaitTimeSeconds = 1          ## Default time between current and next key press
+waitTimeBeforeStartSeconds = 5      ## Number of seconds to wait before start pressing buttons and stuff
 
 ## This is just an example! Change it how you want.
 ## This is one cycle that repeats itself over and over
@@ -246,8 +247,12 @@ def main():
 
 if __name__ == "__main__":
 
-    print("program start but waiting 3 seconds before pressing stuff")
-    time.sleep(3)
+    try:
+        print("program start but waiting "+str(waitTimeBeforeStartSeconds)+" seconds before pressing stuff")
+        time.sleep(waitTimeBeforeStartSeconds)
+    except Exception:
+        print("program start but waiting "+str(10)+" seconds before pressing stuff")
+        time.sleep(10)
     print("start pressing buttons")
 
     n = main()
