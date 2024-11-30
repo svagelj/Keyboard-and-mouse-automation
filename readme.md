@@ -5,3 +5,7 @@ It has a main infinite loop that can be broken out of it by specifying the numbe
 Each button press has a given duration and wait time after the press. You can specify wait time for each key press or use a default value.
 
 Have fun!
+
+### Disclaimer
+
+Please do not use this in any way that may violate legal regulations and moral constraints. The author does not bear any legal risks and losses caused by your usage. You will be responsible for all consequences.
